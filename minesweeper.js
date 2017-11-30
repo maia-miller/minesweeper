@@ -1,44 +1,25 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-var board =
-{
-  cells:
-  [
-    {
-      hidden: true,
-      row: 0,
-      col: 0,
-      isMine: false,
-      isMarked: false
-    },
-    {
-      hidden: true,
-      row: 0,
-      col: 1,
-      isMine: false,
-      isMarked: false
-    },
-    {
-      hidden: true,
-      row: 0,
-      col: 2,
-      isMine: false,
-      isMarked: false
-    },
-    {
-      hidden: true,
-      row: 1,
-      col: 0,
-      isMine: true,
-      isMarked: false
-    },
-
+var board = {
+  cells: [
+    {row: 0, col: 0, isMine: false, isMarked: false, hidden: true},
+    {row: 0, col: 1, isMine: false, isMarked: false, hidden: true},
+    {row: 0, col: 2, isMine: false, isMarked: false, hidden: true},
+    {row: 1, col: 0, isMine: true, isMarked: false, hidden: true},
+    {row: 1, col: 1, isMine: false, isMarked: false, hidden: true},
+    {row: 1, col: 2, isMine: false, isMarked: false, hidden: true},
+    {row: 2, col: 0, isMine: true, isMarked: false, hidden: true},
+    {row: 2, col: 1, isMine: false, isMarked: false, hidden: true},
+    {row: 2, col: 2, isMine: false, isMarked: false, hidden: true},
   ]
 }
 
 function startGame () {
   // Don't remove this function call: it makes the game work!
+  document.addEventListener('click', checkForWin);
+  document.addEventListener('contextmenu', checkForWin);
+
   for (var i=0; i < board.cells.length; i++) {
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
   }
